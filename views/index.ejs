@@ -4,16 +4,24 @@
             <table class="table table-hovered">
                 <thead class="thead-dark">
                     <tr>
+                        <th scope="col">Seller</th>
                         <th scope="col">Buyer</th>
-                        
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Product Image</th>
+                        <th scope="col">Price (with post)</th>
+                        <th scope="col">Delivery Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% orders.forEach((order, index) => { %>
                         <tr>
-                            <th scope="row"><%= order.sellerName %></th>
+                            <td scope="row"><%= order.sellerName %> (<%= order.sellerEmail %>)</th>
+                            <td scope="row"><%= order.buyerName %></td>
+                            <td scope="row"><%= order.buyerName %></td>
                             <td><img src="<%= order.uri %>" class="rounded-circle player-img" alt=""></td>
-                            <td><%= order.buyerName %></td>
+                            <td scope="row"><%= order.buyerName %></td>
+                            <td scope="row"><%= order.buyerName %></td>
+                            
                             
                             
                         </tr>
