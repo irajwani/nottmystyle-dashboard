@@ -1,0 +1,30 @@
+<% include partials/header.ejs %>
+<div class="table-wrapper">
+    <% if (product) {%>
+        <table class="table table-hovered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Price</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                
+                    <tr>
+                        <td scope="row"><%= order.sellerName %> (<%= order.sellerEmail %>)</th>
+                        <td scope="row"><%= order.buyerName %> (<%= order.buyerEmail %>)</td>
+                        <td scope="row"><%= order.productName %></td>
+                        
+                    </tr>
+                
+            </tbody>
+        </table>
+    <% } else { %>
+        <p class="text-center">Could not load product data</p>
+    <% } %>
+</div>
+</div>
+</body>
+</html>
