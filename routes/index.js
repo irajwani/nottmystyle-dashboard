@@ -43,19 +43,23 @@ module.exports = {
           // console.log('yeah')
           if(user.notifications.itemsSold) {
             var productKeys = Object.keys(user.notifications.itemsSold);
+            // console.log(productKeys);
             Object.values(user.notifications.itemsSold).forEach(async (item, index) => {
               let currentProductId = await productKeys[index];
-              
+              // console.log(currentProductId, index)
+              console.log(products[currentProductId]);
               if(products[currentProductId] !== undefined) {
-                console.log('The Product Exists', index)
-                productPrice = await products[currentProductId].text.price
-                productPostPrice = await products[currentProductId].text.post_price
-                productName = await products[currentProductId].text.name
+                // console.log('The Product Exists', index)
+                var {price, post_price, name} = await products[currentProductId].text
+                productPrice = price
+                productPostPrice = post_price
+                productName = name
               }
               else {
-                productPrice = await '-';
-                productPostPrice = await '-';
-                productName = await 'Does not exist in database';
+                // console.log('Product does not exist', index)
+                productPrice = '-';
+                productPostPrice = '-';
+                productName = 'Does not exist in database';
               }
               console.log(productPrice, productPostPrice, productName);
               // admin.auth().getUser(item.buyerId).then(userRecord => console.log(userRecord))
@@ -77,7 +81,7 @@ module.exports = {
                 productPrice,
                 productPostPrice,
               }
-              // console.log(obj);
+              // console.log(obj, index);
               await orders.push(obj);
               // console.log(orders)
               if(orders.length == countOfOrders) {
