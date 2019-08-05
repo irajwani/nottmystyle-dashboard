@@ -5,20 +5,16 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Name</th>
-                    <th scope="col">Brand</th>
-                    <th scope="col">Price</th>
-
+                    <th scope="col">Seller's Paypal</th>
                 </tr>
             </thead>
             <tbody>
-                
-                    <tr>
-                        <td scope="row"><%= order.sellerName %> (<%= order.sellerEmail %>)</th>
-                        <td scope="row"><%= order.buyerName %> (<%= order.buyerEmail %>)</td>
-                        <td scope="row"><%= order.productName %></td>
-                        
-                    </tr>
-                
+                <tr>
+                    <td scope="row"><%= product.text.name %></th>
+                    <td scope="row"><%= product.text.paypal ? product.text.paypal : '' %></td>
+                    <!-- <td scope="row"><%= order.productName %></td> -->
+                    
+                </tr>
             </tbody>
         </table>
     <% } else { %>

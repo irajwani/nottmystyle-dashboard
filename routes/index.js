@@ -51,15 +51,15 @@ module.exports = {
               if(products[currentProductId] !== undefined) {
                 // console.log('The Product Exists', index)
                 var {price, post_price, name} = await products[currentProductId].text
-                productPrice = price
-                productPostPrice = post_price
-                productName = name
+                productPrice = await price
+                productPostPrice = await post_price
+                productName = await name
               }
               else {
                 // console.log('Product does not exist', index)
-                productPrice = '-';
-                productPostPrice = '-';
-                productName = 'Does not exist in database';
+                productPrice = await '-';
+                productPostPrice = await '-';
+                productName = await 'Does not exist in database';
               }
               console.log(productPrice, productPostPrice, productName);
               // admin.auth().getUser(item.buyerId).then(userRecord => console.log(userRecord))
@@ -68,7 +68,7 @@ module.exports = {
               
               // product =  users[item.sellerId].products[productKeys[index]]
               
-              var buyerEmail = await buyerRecord.email, sellerEmail = await sellerRecord.email;
+              var buyerEmail = await buyerRecord.email, sellerEmail = await sellerRecord.email; 
               
               obj = await {
                 buyerName: item.buyerName,
@@ -77,6 +77,7 @@ module.exports = {
                 sellerEmail,
                 uri: item.uri,
                 deliveryStatus: item.deliveryStatus,
+                productId: currentProductId,
                 productName, 
                 productPrice,
                 productPostPrice,

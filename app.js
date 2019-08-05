@@ -8,6 +8,9 @@ const app = express();
 var admin = require('firebase-admin');
 
 const {getOrders} = require('./routes/index');
+const {getProduct} = require('./routes/product');
+const {getUsers} = require('./routes/users');
+
 const port = 3000;
 
 // configure middleware
@@ -23,7 +26,15 @@ const {firebaseAdminConfig} = require('./credentials/keys');
 admin.initializeApp(firebaseAdminConfig);
 // routes for the app
 
+// app.get('/', (req, res) => {
+//     res.render('error.ejs')
+// })
+
 app.get('/', getOrders);
+// app.get('/users', getUsers);
+// app.get('/product/:productId', getProduct);
+
+
 // app.get('/add', addPlayerPage);
 // app.get('/edit/:id', editPlayerPage);
 // app.get('/delete/:id', deletePlayer);

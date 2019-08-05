@@ -1,0 +1,33 @@
+<% include partials/header.ejs %>
+    <div class="table-wrapper">
+        <% if (users.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Image</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach((user, index) => { %>
+                        <tr>
+                            <td scope="row"><%= user.userId %></th>
+                            <td scope="row"><%= user.name %></td>
+                            <td scope="row"><%= user.email %></td>
+                            <td><img src="<%= user.uri %>" class="rounded-circle player-img" alt=""></td>
+                            
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No users found!</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>
+

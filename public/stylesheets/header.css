@@ -1,8 +1,32 @@
 .title {
     font-size: 30px;
-    color: #fff
+    color: #fff;
 }
 
 .green {
     color: green;
+}
+
+.navbar-custom {
+    display: flex;
+    flex-direction: row;
+}
+
+    .flex-six {
+        display: flex;
+        flex: 0.4;
+    }
+
+    .flex-four {
+        display: flex;
+        flex: 0.6;
+    }
+
+    .justify-evenly {
+        justify-content: space-evenly;
+    }
+
+.nav-text {
+    font-size: 22px;
+    color: #fff; 
 }
