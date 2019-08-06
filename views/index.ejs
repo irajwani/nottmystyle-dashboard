@@ -17,7 +17,7 @@
                         <tr>
                             <td scope="row"><%= order.sellerName %> (<%= order.sellerEmail %>)</th>
                             <td scope="row"><%= order.buyerName %> (<%= order.buyerEmail %>)</td>
-                            <td scope="row"><%= order.productName %></td>
+                            <td scope="row"><a href="product/<%= order.productId %>"><%= order.productName %></a></td>
                             <td><img src="<%= order.uri %>" class="rounded-circle player-img" alt=""></td>
                             <td scope="row"><%= order.productPrice %> (<%= order.productPostPrice %>)</td>
                             <td scope="row"><%= order.deliveryStatus %></td>
