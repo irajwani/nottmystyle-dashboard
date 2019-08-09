@@ -8,8 +8,13 @@ const app = express();
 var admin = require('firebase-admin');
 
 const {getOrders} = require('./routes/index');
+<<<<<<< HEAD
 // const {getProduct} = require('./routes/product');
 // const {getUsers} = require('./routes/users');
+=======
+const {getProduct} = require('./routes/product');
+const {getUsers} = require('./routes/users');
+>>>>>>> d1f01ef1c8e110ea33de1d80f1e051d167ca3094
 
 const port = 3000;
 
