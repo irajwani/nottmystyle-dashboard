@@ -15,10 +15,10 @@ const {getProduct} = require('./routes/product');
 const {getProductsForUser} = require('./routes/products');
 const {getUsers} = require('./routes/users');
 
-const port = 3000;
+// const port = 3000;
 
 // configure middleware
-app.set('port', process.env.port || port); // set express to use this port
+// app.set('port', process.env.port || port); // set express to use this port
 app.set('views', __dirname + '/views'); // set express to look in this folder to render our view
 app.set('view engine', 'ejs'); // configure template engine
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -44,8 +44,15 @@ app.get('/users/products/:userId', getProductsForUser)
 // app.get('/delete/:id', deletePlayer);
 // app.post('/add', addPlayer);
 // app.post('/edit/:id', editPlayer);
-
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
 // set the app to listen on the port
-app.listen(port, () => {
-    console.log(`Server running on port: ${port}`);
+app.listen(port, err => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(`Running on port ${port}`);
+    }
 });
