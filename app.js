@@ -7,8 +7,12 @@ const app = express();
 
 var admin = require('firebase-admin');
 
+const {firebaseAdminConfig} = require('./credentials/keys');
+admin.initializeApp(firebaseAdminConfig);
+
 const {getOrders} = require('./routes/index');
 const {getProduct} = require('./routes/product');
+const {getProductsForUser} = require('./routes/products');
 const {getUsers} = require('./routes/users');
 
 const port = 3000;
@@ -22,8 +26,7 @@ app.use(bodyParser.json()); // parse form data client
 app.use(express.static(path.join(__dirname, 'public'))); // configure express to use public folder
 // app.use(fileUpload()); // configure fileupload
 
-const {firebaseAdminConfig} = require('./credentials/keys');
-admin.initializeApp(firebaseAdminConfig);
+
 // routes for the app
 
 // app.get('/', (req, res) => {
@@ -31,8 +34,9 @@ admin.initializeApp(firebaseAdminConfig);
 // })
 
 app.get('/', getOrders);
-// app.get('/users', getUsers);
-// app.get('/product/:productId', getProduct);
+app.get('/users', getUsers);
+app.get('/users/products/:userId', getProductsForUser)
+// app.get('/users/product/:productId', getProduct);
 
 
 // app.get('/add', addPlayerPage);

@@ -14,7 +14,7 @@
                 <tbody>
                     <% users.forEach((user, index) => { %>
                         <tr>
-                            <td scope="row"><%= user.userId %></th>
+                            <td scope="row"><a href="/users/products/<%= user.userId %>"> <%= user.userId %> </a></th>
                             <td scope="row"><%= user.name %></td>
                             <td scope="row"><%= user.email %></td>
                             <td><img src="<%= user.uri %>" class="rounded-circle player-img" alt=""></td>

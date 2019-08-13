@@ -1,0 +1,35 @@
+<% include partials/header.ejs %>
+<div class="table-wrapper">
+    <% if (products.length > 0) {%>
+        <table class="table table-hovered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Post Price</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Seller's Paypal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach((product, index) => { %>
+                    <tr>
+                        <td scope="row"> <%= product.text.name %> </th>
+                        <td scope="row"> <%= product.text.brand %> </th>
+                        <td scope="row"> <%= product.text.price %> </th>
+                        <td scope="row"> <%= product.text.post_price %> </th>
+                        <td><img src="<%= product.uris.thumbnail[0] %>" class="rounded-circle player-img" alt=""></td>
+                        <td scope="row"><%= product.text.paypal ? product.text.paypal : "user did not say" %></td>
+                        
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p class="text-center">Could not load products data</p>
+    <% } %>
+</div>
+</div>
+</body>
+</html>
