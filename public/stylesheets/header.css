@@ -30,3 +30,9 @@
     font-size: 22px;
     color: #fff; 
 }
+
+.normal-text {
+    font-size: 22px;
+    color: black;
+    font-weight: 500;
+}

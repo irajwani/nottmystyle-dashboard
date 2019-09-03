@@ -1,4 +1,18 @@
 <% include partials/header.ejs %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <p class="normal-text">Sort By:</p>
+            </div>
+            <div class="col-10">
+                
+                <a class="btn btn-dark" href="/users/<%= "accountCreationDesc"%>">Account Creation (Descending)</a>
+                <a class="btn btn-dark" href="/users/<%= "accountCreationAsc"%>">Account Creation (Ascending)</a>
+                <a class="btn btn-dark" href="/users/<%= "appUsage"%>">App Usage</a>
+            </div>
+        </div>
+    </div>
     <div class="table-wrapper">
         <% if (users.length > 0) {%>
             <table class="table table-hovered">
@@ -7,6 +21,8 @@
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
+                        <th scope="col">App Usage</th>
+                        <th scope="col">Last Sign In</th>
                         <th scope="col">Image</th>
                         
                     </tr>
@@ -17,6 +33,8 @@
                             <td scope="row"><a href="/users/products/<%= user.userId %>"> <%= user.userId %> </a></th>
                             <td scope="row"><%= user.name %></td>
                             <td scope="row"><%= user.email %></td>
+                            <td scope="row"><%= user.appUsage %></td>
+                            <td scope="row"><%= user.lastSignIn %></td>
                             <td><img src="<%= user.uri %>" class="rounded-circle player-img" alt=""></td>
                             
                         </tr>

@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // configure express to
 // })
 
 app.get('/', getOrders);
-app.get('/users', getUsers);
+app.get('/users/:sortCriteria', getUsers);
 app.get('/users/products/:userId', getProductsForUser)
 // app.get('/users/product/:productId', getProduct);
 
