@@ -30,7 +30,18 @@ function countOrdersFrom(users) {
 }
 
 module.exports = {
+
+
   getOrders: (req, res) => {
+    admin.database().ref('/Orders/').once('value', async (snapshot) => {
+      var orders = Object.values(snapshot.val());
+      res.render('index.ejs', {
+        title: "NottMyStyle Dashboard", orders
+      });
+    })
+  },
+
+  getOrdersInAFuckedUpWay: (req, res) => {
     // console.log('Begin Order Retrieval')
     admin.database().ref().once('value', async (snapshot) => {
       let d = snapshot.val();
