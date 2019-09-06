@@ -33,6 +33,7 @@ module.exports = {
 
 
   getOrders: (req, res) => {
+    
     admin.database().ref('/Orders/').once('value', async (snapshot) => {
       var orders = Object.values(snapshot.val());
       res.render('index.ejs', {
