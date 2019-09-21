@@ -5,12 +5,12 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const session = require('express-session');
 const flash = require('connect-flash');
-const passport = require('passport');
+// const passport = require('passport');
 
 const app = express();
 
 // Passport Config
-require('./credentials/passport')(passport);
+// require('./credentials/passport')(passport);
 
 var admin = require('firebase-admin');
 
@@ -18,7 +18,7 @@ const {firebaseAdminConfig} = require('./credentials/keys');
 admin.initializeApp(firebaseAdminConfig);
 
 const {handleVisit} = require('./routes/index');
-const {showLoginPage, handleLogin} = require('./routes/login');
+// const {showLoginPage, handleLogin} = require('./routes/login');
 const {getOrders} = require('./routes/orders');
 const {getProduct} = require('./routes/product');
 const {getProductsForUser} = require('./routes/products');
@@ -31,30 +31,30 @@ const {getUsers} = require('./routes/users');
 app.set('views', __dirname + '/views'); // set express to look in this folder to render our view
 app.set('view engine', 'ejs'); // configure template engine
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(session({
-    secret: 'secret',
-    resave: false,
-    saveUninitialized: true,
-    // cookie: { secure: true }
-}))
+// app.use(session({
+//     secret: 'secret',
+//     resave: false,
+//     saveUninitialized: true,
+//     // cookie: { secure: true }
+// }))
 
-// Passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
+// // Passport middleware
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-app.use(flash());
+// app.use(flash());
 app.use(bodyParser.json()); // parse form data client
 app.use(express.static(path.join(__dirname, 'public'))); // configure express to use public folder
 
 // app.use(fileUpload()); // configure fileupload
 
 // Global variables
-app.use(function(req, res, next) {
-    res.locals.success_msg = req.flash('success_msg');
-    res.locals.error_msg = req.flash('error_msg');
-    res.locals.error = req.flash('error');
-    next();
-});
+// app.use(function(req, res, next) {
+//     res.locals.success_msg = req.flash('success_msg');
+//     res.locals.error_msg = req.flash('error_msg');
+//     res.locals.error = req.flash('error');
+//     next();
+// });
 
 // routes for the app
 
@@ -62,10 +62,11 @@ app.use(function(req, res, next) {
 //     res.render('error.ejs')
 // })
 
-app.get('/', handleVisit);
-app.get('/login', showLoginPage)
-app.post('/login', handleLogin);
-app.get('/orders', getOrders);
+// app.get('/', handleVisit);
+// app.get('/login', showLoginPage)
+// app.post('/login', handleLogin);
+app.get('/', getOrders);
+// app.get('/orders', getOrders);
 app.get('/users/:sortCriteria', getUsers);
 app.get('/users/products/:userId', getProductsForUser)
 // app.get('/users/product/:productId', getProduct);

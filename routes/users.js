@@ -14,6 +14,10 @@ module.exports = {
         firebaseAuthData = await admin.auth().getUser(user[0]);
 
         email = firebaseAuthData.email;
+        // console.log("User Is:")
+        if(user[1].profile === undefined) {
+          console.log(user[0])
+        }
         name = user[1].profile.name;
         uri = user[1].profile.uri;
         appUsage = user[1].appUsage;
