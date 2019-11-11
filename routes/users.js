@@ -8,10 +8,15 @@ module.exports = {
     admin.database().ref('/Users/').on('value', async (snap) => {
       const Users = await snap.val();
       const countOfUsers = await Object.keys(Users).length - 1;
-      var users = [], userObj, email, name, uri, appUsage, accountCreation, lastSignIn, firebaseAuthData; 
+      var users = [], userObj, email, name, uri, insta, appUsage, accountCreation, lastSignIn, firebaseAuthData; 
       // console.log(JSON.stringify(Users));
       Object.entries(Users).forEach(async (user, index) => {
-        firebaseAuthData = await admin.auth().getUser(user[0]);
+        firebaseAuthData = await admin.auth().getUser(user[0])
+        .catch((err)=>{
+          console.log(err);
+          console.log(user[0]);
+        });
+        // console.log(firebaseAuthData, user[0]);
 
         email = firebaseAuthData.email;
         // console.log("User Is:")
@@ -20,6 +25,7 @@ module.exports = {
         }
         name = user[1].profile.name;
         uri = user[1].profile.uri;
+        insta = user[1].profile.insta ? user[1].profile.insta : "did not specify";
         appUsage = user[1].appUsage;
         accountCreation = firebaseAuthData.metadata.creationTime;
         lastSignIn = firebaseAuthData.metadata.lastSignInTime;
@@ -29,6 +35,7 @@ module.exports = {
           email,
           name,
           uri,
+          insta,
           appUsage,
           accountCreation: new Date(accountCreation).getTime(),
           lastSignIn
@@ -51,7 +58,7 @@ module.exports = {
               return userA.accountCreation - userB.accountCreation 
             }
           })
-          res.render('users.ejs', {title: "Authenticated Users", users})    
+          res.render('users.ejs', {title: "Authenticated Users", users })    
         }
 
       })
